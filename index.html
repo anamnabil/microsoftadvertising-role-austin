@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anam Nabil | 30/60/90 Plan for Microsoft Advertising</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ms-blue: #0078D4;
+            --ms-dark: #1a1a1a;
+            --ms-gray: #605e5c;
+            --ms-light: #f3f2f1;
+            --ms-green: #107c10;
+            --ms-orange: #ff8c00;
+            --ms-purple: #5c2d91;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--ms-dark);
+            background: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--ms-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ms-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--ms-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--ms-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--ms-dark);
+        }
+
+        .hero h1 span {
+            color: var(--ms-blue);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--ms-gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--ms-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #106ebe;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--ms-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--ms-gray);
+            margin-bottom: 3rem;
+        }
+
+        /* Why Microsoft Section */
+        #why-microsoft {
+            background: white;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .reason-card {
+            background: var(--ms-light);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--ms-blue);
+        }
+
+        .reason-card h3 {
+            color: var(--ms-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Plan Section */
+        #plan {
+            background: var(--ms-light);
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .phase {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--ms-blue);
+        }
+
+        .phase.days-30 { border-top-color: var(--ms-blue); }
+        .phase.days-60 { border-top-color: var(--ms-orange); }
+        .phase.days-90 { border-top-color: var(--ms-green); }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-number {
+            background: var(--ms-blue);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .days-60 .phase-number { background: var(--ms-orange); }
+        .days-90 .phase-number { background: var(--ms-green); }
+
+        .phase-title h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .phase-title span {
+            color: var(--ms-gray);
+            font-size: 0.9rem;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--ms-light);
+            border-radius: 6px;
+        }
+
+        .action-icon {
+            color: var(--ms-blue);
+            font-size: 1.2rem;
+        }
+
+        .days-60 .action-icon { color: var(--ms-orange); }
+        .days-90 .action-icon { color: var(--ms-green); }
+
+        .action-item strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .action-item p {
+            font-size: 0.9rem;
+            color: var(--ms-gray);
+        }
+
+        /* Why Me Section */
+        #why-me {
+            background: white;
+        }
+
+        .travel-proof {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .travel-proof img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .travel-proof-caption {
+            margin-top: 1rem;
+            color: var(--ms-gray);
+            font-style: italic;
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .advantage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .travel-connection {
+            background: linear-gradient(135deg, var(--ms-blue), var(--ms-purple));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+        }
+
+        .travel-connection h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .travel-connection ul {
+            list-style: none;
+        }
+
+        .travel-connection li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .travel-connection li:last-child {
+            border-bottom: none;
+        }
+
+        .metrics-box {
+            background: var(--ms-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+        }
+
+        .metrics-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--ms-dark);
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ms-blue);
+        }
+
+        .metric-label {
+            color: var(--ms-gray);
+        }
+
+        /* Brands */
+        .brands-worked {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .brands-worked h4 {
+            color: var(--ms-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .brand-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand-tag {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            color: var(--ms-dark);
+            border: 1px solid #ddd;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--ms-dark);
+            color: white;
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        #contact .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--ms-blue);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .contact-link:hover {
+            background: #106ebe;
+            transform: translateY(-2px);
+        }
+
+        .contact-link.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .contact-link.secondary:hover {
+            background: white;
+            color: var(--ms-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .phase {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Anam Nabil</div>
+        <ul class="nav-links">
+            <li><a href="#why-microsoft">Why Microsoft</a></li>
+            <li><a href="#plan">30/60/90 Plan</a></li>
+            <li><a href="#why-me">Why Me</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-badge">Microsoft Advertising | Account Manager</span>
+            <h1>From Travel Media Founder to Your Next <span>Account Manager</span></h1>
+            <p>A 30/60/90 day plan to drive revenue, build client relationships, and exceed targets in the travel vertical.</p>
+            <a href="#plan" class="cta-button">View My Plan</a>
+        </div>
+    </section>
+
+    <!-- Why Microsoft Section -->
+    <section id="why-microsoft">
+        <div class="container">
+            <h2 class="section-title">Why Microsoft Advertising</h2>
+            <p class="section-subtitle">This isn't just another application. Here's why I'm genuinely excited about this opportunity.</p>
+
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <h3>The Travel Vertical Connection</h3>
+                    <p>I founded a travel media business and sold digital advertising to enterprise hospitality brands. Shannon's focus on travel advertisers means I can hit the ground running with industry knowledge that takes years to build.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Platform Belief</h3>
+                    <p>Microsoft Advertising reaches users at the moment of intent - when they're actively searching. The Bing + Audience Network combination offers advertisers something Google can't: a less crowded, high-intent ecosystem.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Culture & Growth</h3>
+                    <p>Microsoft's mission to "empower every person and every organization to achieve more" resonates with how I approach client relationships - I succeed when my clients succeed. The Platinum Club recognition tells me excellence is celebrated here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 30/60/90 Plan Section -->
+    <section id="plan">
+        <div class="container">
+            <h2 class="section-title">My 30/60/90 Day Plan</h2>
+            <p class="section-subtitle">A structured approach to ramping up, contributing, and exceeding expectations.</p>
+
+            <div class="timeline">
+                <!-- Days 1-30 -->
+                <div class="phase days-30">
+                    <div class="phase-header">
+                        <div class="phase-number">1-30</div>
+                        <div class="phase-title">
+                            <h3>Learn & Absorb</h3>
+                            <span>Build the foundation for long-term success</span>
+                        </div>
+                    </div>
+                    <div class="action-grid">
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Platform Mastery</strong>
+                                <p>Deep dive into Bing Ads, Microsoft Audience Network, internal tools and analytics systems</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Account Immersion</strong>
+                                <p>Study assigned travel accounts - business drivers, seasonality, goals, and historical performance</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Relationship Building</strong>
+                                <p>Meet AEs, Specialists, and internal stakeholders. Understand who does what and how we collaborate</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Shadow & Listen</strong>
+                                <p>Join client calls, observe top performers, understand what "great" looks like at Microsoft</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Process Learning</strong>
+                                <p>Master Salesforce workflows, reporting cadences, and account planning templates</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Travel Industry Intel</strong>
+                                <p>Refresh knowledge on travel marketing cycles, booking windows, and seasonal trends</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Days 31-60 -->
+                <div class="phase days-60">
+                    <div class="phase-header">
+                        <div class="phase-number">31-60</div>
+                        <div class="phase-title">
+                            <h3>Contribute & Execute</h3>
+                            <span>Add value while building momentum</span>
+                        </div>
+                    </div>
+                    <div class="action-grid">
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Independent Management</strong>
+                                <p>Begin managing accounts with increasing autonomy, taking ownership of day-to-day client needs</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>First Wins</strong>
+                                <p>Identify quick-win optimizations and deliver first data-driven recommendations to clients</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Trusted Advisor</strong>
+                                <p>Build trusted-advisor relationships with day-to-day client contacts through consistent value delivery</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Campaign Excellence</strong>
+                                <p>Execute campaigns on time, on budget, on brand - sweating the details that matter to clients</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Pipeline Building</strong>
+                                <p>Start identifying upsell and expansion opportunities within existing accounts</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Cross-Functional Collaboration</strong>
+                                <p>Partner with AEs and Specialists to ensure clients get the best of Microsoft's resources</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Days 61-90 -->
+                <div class="phase days-90">
+                    <div class="phase-header">
+                        <div class="phase-number">61-90</div>
+                        <div class="phase-title">
+                            <h3>Own & Exceed</h3>
+                            <span>Full ownership and path to exceeding targets</span>
+                        </div>
+                    </div>
+                    <div class="action-grid">
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Full Ownership</strong>
+                                <p>Complete ownership of book of business and personal revenue targets</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Proactive Insights</strong>
+                                <p>Lead with data - bring ideas and opportunities to clients before they ask</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Exceed Quota</strong>
+                                <p>Track to exceed monthly and quarterly targets through disciplined execution</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Expansion Revenue</strong>
+                                <p>Close first upsell or consumption growth opportunity within assigned accounts</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Team Contribution</strong>
+                                <p>Share learnings, contribute to team culture, help onboard future new hires</p>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <span class="action-icon">&#9679;</span>
+                            <div>
+                                <strong>Replicate Success</strong>
+                                <p>Document winning strategies and playbooks to scale across similar client types</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Me Section -->
+    <section id="why-me">
+        <div class="container">
+            <h2 class="section-title">Why Me</h2>
+            <p class="section-subtitle">The unique combination I bring to this role.</p>
+
+            <div class="advantage-grid">
+                <div class="travel-connection">
+                    <h3>My Unfair Advantage: Travel Industry Experience</h3>
+                    <ul>
+                        <li>
+                            <span>&#10003;</span>
+                            <span><strong>Founded a travel media business</strong> selling digital advertising to enterprise hospitality brands across Europe</span>
+                        </li>
+                        <li>
+                            <span>&#10003;</span>
+                            <span><strong>Sold to Kempinski, Crowne Plaza, Scandic</strong> - I understand how travel brands think about marketing</span>
+                        </li>
+                        <li>
+                            <span>&#10003;</span>
+                            <span><strong>Built 50K+ monthly audience</strong> through SEO and content - I know what drives travel consumers</span>
+                        </li>
+                        <li>
+                            <span>&#10003;</span>
+                            <span><strong>Managed campaigns end-to-end</strong> from creative briefing through performance reporting</span>
+                        </li>
+                        <li>
+                            <span>&#10003;</span>
+                            <span><strong>Understand seasonality</strong> - booking windows, peak seasons, and how travel marketing cycles work</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="metrics-box">
+                    <h3>Current Performance</h3>
+                    <div class="metric">
+                        <div>
+                            <div class="metric-value">300%</div>
+                            <div class="metric-label">Quota - Month 1</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div>
+                            <div class="metric-value">160%+</div>
+                            <div class="metric-label">Quota - Ongoing</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div>
+                            <div class="metric-value">+6.5%</div>
+                            <div class="metric-label">Response Rate Improvement (A/B Testing)</div>
+                        </div>
+                    </div>
+
+                    <div class="brands-worked">
+                        <h4>Travel Brands I've Worked With</h4>
+                        <div class="brand-logos">
+                            <span class="brand-tag">Kempinski Hotels</span>
+                            <span class="brand-tag">Crowne Plaza</span>
+                            <span class="brand-tag">Scandic Hotels</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Travel Blog Proof -->
+            <div class="travel-proof">
+                <img src="travel-blog.jpg" alt="Best Blogger Ever - Travel Blog in Berlin">
+                <p class="travel-proof-caption">Building my travel blog "Best Blogger Ever" from a hotel room overlooking the Brandenburg Gate, Berlin</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">I'd love to discuss how I can contribute to your team.</p>
+
+            <div class="contact-links">
+                <a href="mailto:anam.nabil1@gmail.com" class="contact-link">
+                    Email Me
+                </a>
+                <a href="https://linkedin.com/in/anam-nabil-2058481bb" target="_blank" class="contact-link secondary">
+                    LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Anam Nabil | Austin, TX | anam.nabil1@gmail.com</p>
+        <p style="margin-top: 0.5rem;">Built with genuine excitement for this opportunity</p>
+    </footer>
+</body>
+</html>
