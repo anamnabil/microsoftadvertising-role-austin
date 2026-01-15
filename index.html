@@ -264,21 +264,28 @@
             background: white;
         }
 
-        .travel-proof {
+        .travel-proof-section {
             margin-top: 3rem;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('travel-blog.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            padding: 4rem 3rem;
+            color: white;
             text-align: center;
         }
 
-        .travel-proof img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        .travel-proof-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
         }
 
-        .travel-proof-caption {
-            margin-top: 1rem;
-            color: var(--ms-gray);
-            font-style: italic;
+        .travel-proof-section p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
         .advantage-grid {
@@ -765,9 +772,9 @@
             </div>
 
             <!-- Travel Blog Proof -->
-            <div class="travel-proof">
-                <img src="travel-blog.jpg" alt="Best Blogger Ever - Travel Blog in Berlin">
-                <p class="travel-proof-caption">Building my travel blog "Best Blogger Ever" from a hotel room overlooking the Brandenburg Gate, Berlin</p>
+            <div class="travel-proof-section">
+                <h3>The Proof</h3>
+                <p>Building my travel blog "Best Blogger Ever" from a hotel room overlooking the Brandenburg Gate, Berlin - this is where it all started.</p>
             </div>
         </div>
     </section>
